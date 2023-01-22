@@ -1,0 +1,118 @@
+## DEBUGGING HELP:
+# https://stackoverflow.com/questions/13334634/the-difference-between-os-system-and-subprocess-calls
+# https://docs.python.org/2/library/subprocess.html
+
+from tkinter import *
+window = Tk()
+
+window.geometry("420x320")
+window.title("Shutdown1")
+window.config(bg="#660306")
+
+label = Label(window,
+              text="PC will shutdown",
+              font=('Arial',15,'bold'),
+              fg=("#000000"),
+              bg=("#e6050b"),
+              relief=RAISED,
+              bd=10,
+              padx=10,
+              pady=10,)
+label.place(x=10,y=10)
+
+def click1():
+    import subprocess
+    cmdCommand = "shutdown /s /t 300"
+    process = subprocess.Popen(cmdCommand.split(), stdout=subprocess.PIPE)
+    print("PC will shutdown in 5 min")
+
+button1 = Button(window,
+                text="5 min",
+                command=click1,
+                font=('Comic Sans',10),
+                fg=("#fcba03"),
+                bg=("#fc3903"),
+                activebackground=("#8c2407"),
+                )
+
+button1.place(x=30,y=150)
+
+def click2():
+    import subprocess
+    cmdCommand = "shutdown /s /t 600"
+    process = subprocess.Popen(cmdCommand.split(), stdout=subprocess.PIPE)
+    print("PC will shutdown in 10 min")
+
+button2 = Button(window,
+                text="10 min",
+                command=click2,
+                font=('Comic Sans',10),
+                fg=("#fcba03"),
+                bg=("#fc3903"),
+                activebackground=("#8c2407"),
+                )
+
+button2.place(x=30,y=200)
+
+def click3():
+    import subprocess
+    cmdCommand = "shutdown /s /t 900"
+    process = subprocess.Popen(cmdCommand.split(), stdout=subprocess.PIPE)
+    print("PC will shutdown in 15 min")
+
+button3 = Button(window,
+                text="15 min",
+                command=click3,
+                font=('Comic Sans',10),
+                fg=("#fcba03"),
+                bg=("#fc3903"),
+                activebackground=("#8c2407"),
+                )
+
+button3.place(x=30,y=250)
+
+def click4():
+    import subprocess
+    cmdCommand = "shutdown /a"
+    process = subprocess.Popen(cmdCommand.split(), stdout=subprocess.PIPE)
+    print("Shutdown canceled")
+
+button4 = Button(window,
+                text="Remove",
+                command=click4,
+                font=('Comic Sans',15),
+                fg=("#ab0000"),
+                bg=("#ff9d00"),
+                activebackground=("#8c2407"),
+                )
+
+button4.place(x=325,y=250)
+
+# timer for shutdown
+def click5():
+
+    print("Enter Number of minutes to Shutdown System: ")
+    sec = int(input())
+    strOne = "shutdown /s /t "
+    strTwo = str(sec * 60)
+    str1 = strOne + strTwo
+
+    import subprocess
+    cmdCommand = str1
+    process = subprocess.Popen(cmdCommand.split(), stdout=subprocess.PIPE)
+
+button5 = Button(window,
+                text="Timer",
+                command=click5,
+                font=('Comic Sans',12),
+                fg=("#000000"),
+                bg=("#34eb8f"),
+                activebackground=("#8c2407"),
+                )
+
+button5.place(x=325,y=150)
+
+window.mainloop()
+input()
+
+exit()
